@@ -22,36 +22,36 @@ body.dark {
 
 /* LIGHT THEME */
 .todo-img {
-    content: url("./dashboard_image_1.png");
+    content: url("./1.jpg");
 }
 .planner-img {
-    content: url("./dashboard_image_2.png");
+    content: url("./2.jpg");
 }
 .motivation-img {
-    content: url("./dashboard_image_3.png");
+    content: url("./3.jpg");
 }
 .pomodoro-img {
-    content: url("./dashboard_image_4.png");
+    content: url("./4.jpg");
 }
 .goals-img {
-    content: url("./dashboard_image_5.png");
+    content: url("./5.jpg");
 }
 
 /* DARK THEME */
 body.dark .todo-img {
-    content: url("./dashboard_image_6.png");
+    content: url("./66.jpg");
 }
 body.dark .planner-img {
-    content: url("./dashboard_image_7.png");
+    content: url("./7.jpg");
 }
 body.dark .motivation-img {
-    content: url("./dashboard_image_8.png");
+    content: url("./8.jpg");
 }
 body.dark .pomodoro-img {
-    content: url("./dashboard_image_9.png");
+    content: url("./9.jpg");
 }
 body.dark .goals-img {
-    content: url("./dashboard_image_10.png");
+    content: url("./10.jpg");
 }
 
 
@@ -499,10 +499,73 @@ body.dark .task {
 }
 
 .day-planner {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
 }
+
+.time-block {
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.9),
+        rgba(255,255,255,0.5)
+    );
+    border-radius: 22px;
+    padding: 22px;
+    border: 1px solid #c7d8ff;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    transition: all 0.3s ease;
+}
+
+.time-block:hover {
+    transform: translateY(-6px);
+    animation: glow 1.5s infinite;
+}
+
+.time {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    padding: 6px 12px;
+    border-radius: 999px;
+
+    background: var(--blue);
+    color: white;
+}
+
+.time-block input {
+    border: none;
+    outline: none;
+
+    padding: 14px 16px;
+    border-radius: 12px;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    background: var(--sec);
+}
+
+body.dark .time-block {
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.08),
+        rgba(255,255,255,0.02)
+    );
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(14px);
+}
+
+
 
 .motivation-container {
     max-width: 1000px;

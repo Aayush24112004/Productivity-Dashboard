@@ -154,18 +154,42 @@ function dailyPlanner() {
 
     var dayPlanData = JSON.parse(localStorage.getItem('dayPlanData')) || {}
 
-    var hours = Array.from({ length: 18 }, (_, idx) => `${6 + idx}:00 - ${7 + idx}:00`)
+    function formatTime(hour) {
+    const period = hour >= 12 && hour < 24 ? "PM" : "AM";
+    let h = hour % 12;
+    if (h === 0) h = 12;
+    return `${h}:00 ${period}`;
+}
+
+var hours = [];
+
+// 6 AM (6) to 12 AM (24)
+for (let hour = 6; hour < 24; hour++) {
+    const from = formatTime(hour);
+    const to = formatTime(hour + 1);
+    hours.push(`${from} - ${to}`);
+}
+
 
 
     var wholeDaySum = ''
     hours.forEach(function (elem, idx) {
 
         var savedData = dayPlanData[idx] || ''
+        let statusClass = savedData ? "completed" : "pending";
 
-        wholeDaySum = wholeDaySum + `<div class="day-planner-time">
-    <p>${elem}</p>
-    <input id=${idx} type="text" placeholder="..." value=${savedData}>
-</div>`
+wholeDaySum += `
+<div class="time-block ${statusClass}">
+    <span class="time">${elem}</span>
+    <input 
+        id="${idx}" 
+        type="text" 
+        placeholder="Plan this hour..." 
+        value="${savedData}"
+    >
+</div>
+`;
+
     })
 
     dayPlanner.innerHTML = wholeDaySum
@@ -173,14 +197,23 @@ function dailyPlanner() {
 
     var dayPlannerInput = document.querySelectorAll('.day-planner input')
 
-    dayPlannerInput.forEach(function (elem) {
-        elem.addEventListener('input', function () {
-            console.log('hello');
-            dayPlanData[elem.id] = elem.value
+   dayPlannerInput.forEach(function (elem) {
+    elem.addEventListener("input", function () {
+        dayPlanData[elem.id] = elem.value;
+        localStorage.setItem("dayPlanData", JSON.stringify(dayPlanData));
 
-            localStorage.setItem('dayPlanData', JSON.stringify(dayPlanData))
-        })
-    })
+        const parent = elem.closest(".time-block");
+
+        if (elem.value.trim() !== "") {
+            parent.classList.add("completed");
+            parent.classList.remove("pending");
+        } else {
+            parent.classList.add("pending");
+            parent.classList.remove("completed");
+        }
+    });
+});
+
 }
 
 dailyPlanner()
