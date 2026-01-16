@@ -172,6 +172,7 @@ for (let hour = 6; hour < 24; hour++) {
 
 
 
+
     var wholeDaySum = ''
     hours.forEach(function (elem, idx) {
 
