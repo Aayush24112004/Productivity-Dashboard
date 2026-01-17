@@ -56,7 +56,7 @@ body.dark .goals-img {
 
 
 * {
-    min-width: 0;
+    /* min-width: 0; */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -958,5 +958,52 @@ h2 {
     .back {
         padding: 10px 14px;
         font-size: 14px;
+    }
+}
+
+/* ===== MOBILE STABILITY PATCH (SAFE) ===== */
+@media (max-width: 600px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    header {
+        flex-direction: column;
+    }
+
+    .todo-container,
+    .task,
+    .task-right,
+    .goal-form {
+        flex-wrap: wrap;
+    }
+
+    .addTask,
+    .allTask {
+        width: 100%;
+    }
+
+    .addTask button,
+    .goal-form button {
+        width: auto;
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    .pomo-timer {
+        padding: 20px;
+    }
+
+    .pomo-timer button {
+        width: auto;
+        margin: 6px;
+        font-size: 14px;
+    }
+
+    .theme,
+    .back {
+        padding: 8px 12px;
+        font-size: 13px;
     }
 }
