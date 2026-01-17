@@ -122,11 +122,20 @@ header {
     gap: 30px;
     margin-bottom: 50px;
 }
-
 header {
     display: flex;
     gap: 30px;
+    flex-wrap: wrap;
 }
+
+.header1 {
+    flex: 2 1 600px;
+}
+
+.header2 {
+    flex: 1 1 280px;
+}
+
 
 
 .header1 {
@@ -164,13 +173,19 @@ header {
 
 .elem {
     
-    width: calc(25% - 22.5px);    
+     width: 100%;
     height: 360px;                
     border-radius: 24px;
     overflow: hidden;
     position: relative;
     cursor: pointer;
     box-shadow: 0 12px 30px rgba(0,0,0,.15);
+}
+
+.allFeatures {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
 }
 
 .elem img {
@@ -232,8 +247,7 @@ header {
     height: 100vh;
 
     background: var(--sec);
-    padding: 80px 70px;
-
+    padding: clamp(24px, 6vw, 80px);
     display: none;
     z-index: 9999;
 
@@ -500,7 +514,7 @@ body.dark .task {
 
 .day-planner {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 24px;
 }
 
@@ -881,4 +895,46 @@ body.dark .pomo-timer {
     .pomo-timer h1 {
         font-size: 100px;
     }
+}
+
+
+h1 {
+    font-size: clamp(32px, 5vw, 56px);
+}
+
+h2 {
+    font-size: clamp(24px, 4vw, 48px);
+}
+
+
+.pomo-timer h1 {
+    font-size: clamp(72px, 18vw, 160px);
+}
+
+.todo-list-fullpage h2,
+.daily-planner-fullpage h2 {
+    font-size: clamp(36px, 6vw, 64px);
+}
+
+
+.todo-container {
+    flex-wrap: wrap !important;
+}
+
+.addTask {
+    flex: 1 1 320px !important;
+}
+
+.allTask {
+    flex: 2 1 420px !important;
+}
+
+.theme {
+    bottom: 16px !important;
+    right: 16px !important;
+}
+
+.back {
+    top: 16px   !important;
+    right: 16px !important;
 }
