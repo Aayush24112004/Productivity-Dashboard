@@ -294,7 +294,7 @@ function pomodoroTimer() {
     var session = document.querySelector('.pomodoro-fullpage .session')
     var isWorkSession = true
 
-    let totalSeconds = 25 * 60
+    let totalSeconds = 25 * 60 
     let timerInterval = null
 
     function updateTimer() {
@@ -319,9 +319,9 @@ function pomodoroTimer() {
                     timer.innerHTML = '05:00'
                     session.innerHTML = 'Take a Break'
                     session.style.backgroundColor = 'var(--blue)'
-                    totalSeconds = 5 * 60
+                    totalSeconds = 5 * 60 
                 }
-            }, 10)
+            }, 1000)
         } else {
 
 
@@ -337,7 +337,7 @@ function pomodoroTimer() {
                     session.style.backgroundColor = 'var(--green)'
                     totalSeconds = 25 * 60
                 }
-            }, 10)
+            }, 1000)
         }
 
     }
